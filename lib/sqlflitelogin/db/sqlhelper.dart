@@ -23,7 +23,7 @@ password TEXT)
       String password) async {
     final db = await Sqlhelper.Mydata();
     final data = {"name": name, "email": email, "password": password};
-    final id = await db.insert("login", data,);
+    final id = await db.insert("login", data,);              //insert or rawquery
     return id;
   }
 

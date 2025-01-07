@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 void main(){
-  runApp(MaterialApp(home: Homeuser(),));
+  runApp(MaterialApp(home: Homeuserr(),));
 }
-class Homeuser extends StatefulWidget {
-  const Homeuser({super.key});
+class Homeuserr extends StatefulWidget {
+  const Homeuserr({super.key});
 
   @override
-  State<Homeuser> createState() => _HomeuserState();
+  State<Homeuserr> createState() => _HomeuserState();
 }
 
-class _HomeuserState extends State<Homeuser> {
+class _HomeuserState extends State<Homeuserr> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

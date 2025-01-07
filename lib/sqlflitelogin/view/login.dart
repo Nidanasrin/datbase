@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled1/sqlflitelogin/db/sqlhelper.dart';
-import 'package:untitled1/sqlflitelogin/view/homeadmin.dart';
-import 'package:untitled1/sqlflitelogin/view/homeuser.dart';
 import 'package:untitled1/sqlflitelogin/view/register.dart';
-
-
-
+import '../../login using hive/view/registration.dart';
+import '../db/sqlhelper.dart';
+import 'homeadmin.dart';
+import 'homeuser.dart';
 
 void main(){
   runApp(MaterialApp(home: Logins(),));
@@ -26,9 +24,8 @@ class _LoginsState extends State <Logins> {
   var conpass=TextEditingController();
 
 
-
-
   void logincheck(String email, String password)async{
+
     if (email == 'admin@gmail.com' && password =='123456'){
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Homeadmin()));
       print("Login success");
@@ -36,7 +33,7 @@ class _LoginsState extends State <Logins> {
     else{
       var data=await Sqlhelpper.checklogin(email, password);
       if(data.isNotEmpty){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Homeuser(data: data)));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Homeuserr()));
       }
 
       else if(data.isEmpty){
@@ -131,7 +128,7 @@ class _LoginsState extends State <Logins> {
                       onPressed: ()async{
                         var valid = formkey.currentState!.validate();
                         if (valid) {
-                          await logincheck(conemail.text, conpass.text);
+                           logincheck(conemail.text, conpass.text);
                         }
                       },
                       child: Text("login")),
@@ -143,8 +140,7 @@ class _LoginsState extends State <Logins> {
                       child: Text("Not a user ? create an account !")),
                 ],
               ),
-    )
-        )
-    );
+            ),
+            ));
     }
 }

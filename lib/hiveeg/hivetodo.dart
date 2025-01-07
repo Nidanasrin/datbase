@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:untitled1/login%20using%20hive/model/usermodel.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  Hive.registerAdapter(UserAdapter());
+  Hive.openBox<User>('user');
   await Hive.openBox('todobox');
   runApp(MaterialApp(home: hiveui(),));
 }
@@ -110,7 +113,7 @@ class _hiveuiState extends State<hiveui> {
                   ),
                 ),
                 ElevatedButton(onPressed: () async {
-                  if (id == null) {
+                  if(id == null){
                     createtask({"title":title.text, "subtitle":subtitle.text});
                   }
                   if(id!=null){
